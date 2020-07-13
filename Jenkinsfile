@@ -16,6 +16,16 @@ pipeline {
         sh 'mvn clean test'
       }
     }
-  }
+
+ stage('Code Coverage') {
+ steps{ sh 'mvn clean cobertura:check'
+ }
+ }
+ stage('Install') {
+ steps{
+ sh 'mvn clean install'
+ }
+ }
+}
 
   }
